@@ -1,0 +1,13 @@
+.div-class {
+    height: 300px;
+    width: 300px;
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-mode {
+    color: #fff !important;
+    background-color: #000 !important;
+}

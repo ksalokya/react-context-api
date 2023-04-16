@@ -1,25 +1,14 @@
-import React from 'react'
-import { FirstName, LastName } from '../App'
+import React, { useContext } from 'react'
+import { ThemeContext } from '../App'
 
 const ComponentC = () => {
+    const themeContext = useContext(ThemeContext);
+    function hanleClick(){
+        themeContext();
+    }
     return (
-        <>
-            <FirstName.Consumer>
-                {(fName) => {
-                    return (
-                        <LastName.Consumer>
-                            {(lName) => {
-                                return (
-                                    <>
-                                        <h1>My first name is {fName}</h1>
-                                        <h1>My last name is {lName}</h1>
-                                    </>
-                                );
-                            }}
-                        </LastName.Consumer>
-                    );
-                }}
-            </FirstName.Consumer>
+        <>  
+            <button onClick={hanleClick}> Click Me! </button>
         </>
     );
 }

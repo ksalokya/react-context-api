@@ -1,18 +1,31 @@
-import React, { createContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import ComponentA from './components/ComponentA'
+import './app.css'
 
-export const FirstName = createContext();
-export const LastName = createContext();
+export const ThemeContext = createContext();
 
 function App() {
+
+  const [state, setState] = useState(false);
+  function handleState() {
+    setState(!state);
+  }
+
+  useEffect(() => {
+    console.log(state);
+  }, [state])
+
+  // className={state ? "class1" : "class2"}
+
   return (
-    <>
-      <FirstName.Provider value={'John'}>
-        <LastName.Provider value={'Doe'}>
-          <ComponentA />
-        </LastName.Provider>
-      </FirstName.Provider>
-    </>
+    <div>
+      <ThemeContext.Provider value={handleState}>
+        <div className={`div-class ${state ? "dark-mode" : ""}`}>
+          Hello From App
+        </div>
+        <ComponentA />
+      </ThemeContext.Provider>
+    </div>
   );
 }
 
